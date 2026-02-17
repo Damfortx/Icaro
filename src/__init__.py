@@ -1,0 +1,1 @@
+# Icaro - AI Trading Bot

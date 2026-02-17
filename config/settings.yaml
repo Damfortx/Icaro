@@ -1,0 +1,42 @@
+# Icaro Trading Bot Configuration
+
+binance:
+  testnet: false # Production mode
+
+deepseek:
+  model: "deepseek-chat"
+  base_url: "https://api.deepseek.com/v1"
+  temperature: 0.7
+  max_tokens: 4096
+
+trading:
+  quote_currency: "USDC"
+  max_position_percent: 95 # Use almost all capital per trade (small portfolio strategy)
+  min_trade_usdc: 5.0 # Minimum trade size (Binance minimum notional)
+  reserve_usdc: 1.0 # Always keep this amount as reserve
+
+  # Profit taking levels
+  take_profit_levels:
+    - percent: 5
+      sell_fraction: 0.25
+    - percent: 10
+      sell_fraction: 0.25
+    - percent: 20
+      sell_fraction: 0.50
+
+  # Stop loss
+  stop_loss_percent: 10
+
+agent:
+  decision_interval_seconds: 10 # Scalping: very fast decisions
+  max_trades_per_hour: 60 # Allow many trades for scalping
+  research_enabled: false # Disable research to speed up decisions
+
+# Scalping Mode Configuration
+scalping:
+  enabled: true
+  target_profit_percent: 1.0 # Take profits at 1%
+  stop_loss_percent: 1.0 # Cut losses at 1%
+  min_volume_usdc: 100000 # Only trade high-volume coins
+  max_hold_minutes: 5 # Don't hold positions too long
+
